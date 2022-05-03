@@ -1,15 +1,17 @@
 <form method="POST" action="?class=Form&method=salvar">
+    <input type="hidden" name="id" value="{id}" />
     <div>
         <label for="produto">Produto: </label>
-        <input type="text" name="produto" id="produto" required />
+        <input type="text" name="produto" id="produto" required value="{produto}" />
     </div>
+    
     <div>
         <label for="preco">Preço: </label>
-        <input type="number" step="0.01" name="preco" id="preco" required />
+        <input type="number" step="0.01" name="preco" id="preco" required value="{preco}" />
     </div>
     <div>
         <label for="quantidade">Quantidade: </label>
-        <input type="number" name="quantidade" id="quantidade" required />
+        <input type="number" name="quantidade" id="quantidade" required value="{quantidade}" />
     </div>
     <div>
         <button type="submit">Salvar</button>

@@ -20,7 +20,7 @@ spl_autoload_register("classLoader");
 //Front controller
 
 class Aplicacao{
-    private static $app = "/miguellmf";
+    private static $app = "/miguell";
     public static function run(){
 
             $layout = new Template("view/layout.html");

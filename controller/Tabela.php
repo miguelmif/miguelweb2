@@ -15,8 +15,20 @@ class Tabela
         $tabela->set("linha", $resultado);
         $this->message = $tabela->saida();
       }
+    }
+  public function remover()
+  {
+    if (isset($_GET["id"])) {
+      try {
+        $conexao = Transaction::get();
+        $id = $conexao->quote($_GET["id"]);
+        $estoque = new Crud("estoque");
+        $estoque->delete("id=$id");
+      } catch (Exception $e) {
+        echo $e->getMessage();
+      }
+    }
   }
-  
   public function getMessage()
   {
     return $this->message;

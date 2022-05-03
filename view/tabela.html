@@ -15,11 +15,21 @@
           <td>{preco}</td>
           <td>{quantidade}</td>
           <td>
-            <button type="button">Editar</button>
-          </td>
+            <button
+              type="button"
+              onclick="location.href='?class=Form&method=editar&id={id}'"
+            >
+              Editar
+            </button>
           <td>
-            <button type="button">Remover</button>
-        </td>
+            <button
+              type="button"
+              onclick="if(confirm('Deseja realmente remover?'))
+                location.href='?class=Tabela&method=remover&id={id}'"
+            >
+              Remover
+            </button>
+          </td>
        </tr>
        {/linha}
     </tbody>
