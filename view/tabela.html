@@ -16,16 +16,18 @@
           <td>{quantidade}</td>
           <td>
             <button
-              type="button"
-              onclick="location.href='?class=Form&method=editar&id={id}'"
+            class="edit"
+            type="button"
+            onclick="location.href='?class=Form&method=editar&id={id}'"
             >
               Editar
             </button>
           <td>
             <button
-              type="button"
-              onclick="if(confirm('Deseja realmente remover?'))
-                location.href='?class=Tabela&method=remover&id={id}'"
+            class="remove"
+            type="button"
+            onclick="if(confirm('Deseja realmente remover?'))
+              location.href='?class=Tabela&method=remover&id={id}'"
             >
               Remover
             </button>
