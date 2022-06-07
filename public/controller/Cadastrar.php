@@ -5,12 +5,12 @@ class Cadastrar
     private $error = "";
     public function __construct()
     {
-    Transaction::open();
+        Transaction::open();
     }
     public function controller()
     {
-    $form = new Template("public/view/cadastrar.html");
-    $this->message = $form->saida();
+        $form = new Template("public/view/cadastrar.html");
+        $this->message = $form->saida();
     }
     public function salvar()
     {
@@ -31,34 +31,37 @@ class Cadastrar
                 $this->message = "Ocorreu um erro! " . $e->getMessage();
                 $this->error = TRUE;
                 }
-        } else {
+            } else {
             $this->message = "Preencha todos os campos! ";
             $this->error = TRUE;
-        }
+            }
     }
-public function getMessage()
-{
-    if (is_string($this->error)) {
-        return $this->message;
-    } else {
-        $msg = new Template("shared/view/msg.html");
-        if ($this->error) {
-            $msg->set("cor", "danger");
+    
+    public function getMessage()
+    {
+        if (is_string($this->error)) {
+            return $this->message;
         } else {
-            $msg->set("cor", "success");
+            $msg = new Template("shared/view/msg.html");
+            if ($this->error) {
+                $msg->set("cor", "danger");
+            } else {
+                $msg->set("cor", "success");
+            }
+            $msg->set("msg", $this->message);
+            $msg->set("uri", "/modelo/?class=Login");
+            return $msg->saida();
         }
-        $msg->set("msg", $this->message);
-        $msg->set("uri", "/modelo/?class=Login");
-        return $msg->saida();
     }
-}
-public function getError()
-{
-    return $this->error;
-}
- public function __destruct()
-{
-    Transaction::close();
-}
+    
+    public function getError()
+    {
+        return $this->error;
+    }
+    
+    public function __destruct()
+    {
+        Transaction::close();
+    }
 }
    

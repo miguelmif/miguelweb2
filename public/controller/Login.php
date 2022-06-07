@@ -21,8 +21,8 @@ class Login
             $senha = $conexao->quote(sha1($_POST["senha"]));
             $crud = new Crud("usuario");
             $usuario = $crud->select(
-            "*",
-            "email={$email} AND senha={$senha}"
+                "*",
+                "email={$email} AND senha={$senha}"
             );
             if (!$crud->getError()) {
                 Session::startSession();
@@ -42,28 +42,31 @@ class Login
                 $this->error = TRUE;
             }
         }
- public function getMessage()
- {
- if (is_string($this->error)) {
- return $this->message;
- } else {
- $msg = new Template("shared/view/msg.html");
- if ($this->error) {
- $msg->set("cor", "danger");
- } else {
- $msg->set("cor", "success");
- }
- $msg->set("msg", $this->message);
- $msg->set("uri", "/modelo/?class=Login");
- return $msg->saida();
- }
- }
- public function getError()
- {
- return $this->error;
- }
- public function __destruct()
- {
- Transaction::close();
- }
+
+    public function getMessage()
+    {
+        if (is_string($this->error)) {
+            return $this->message;
+        } else {
+            $msg = new Template("shared/view/msg.html");
+            if ($this->error) {
+                $msg->set("cor", "danger");
+            } else {
+                $msg->set("cor", "success");
+            }
+            $msg->set("msg", $this->message);
+            $msg->set("uri", "/modelo/?class=Login");
+            return $msg->saida();
+        }
+    }
+    
+    public function getError()
+    {
+        return $this->error;
+    }
+    
+    public function __destruct()
+    {
+        Transaction::close();
+    }
 }
